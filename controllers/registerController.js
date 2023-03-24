@@ -1,3 +1,6 @@
+//NEED TO CONVERT DB Connection to MongoDB
+const roles = require('../config/roles_list')
+
 const usersDB = {
     users: require('../model/users.json'),
     setUsers: function (data) { this.users = data }
@@ -5,8 +8,14 @@ const usersDB = {
 const fsPromises = require('fs').promises;
 const path = require('path');
 const bcrypt = require('bcrypt');
+const ROLES_LIST = require('../config/roles_list');
+
+const defaultRole = ROLES_LIST.User
 
 const handleNewUser = async (req, res) => {
+    
+    const defaultRole = ROLES_LIST.User
+
     const { user, pwd } = req.body;
     if (!user || !pwd) return res.status(400).json({ 'message': 'Username and password are required.' });
     // check for duplicate usernames in the db
@@ -18,7 +27,7 @@ const handleNewUser = async (req, res) => {
         //store the new user
         const newUser = {
             "username": user,
-            "roles": { "User": 2001 },
+            "roles": { defaultRole },
             "password": hashedPwd
         };
         usersDB.setUsers([...usersDB.users, newUser]);

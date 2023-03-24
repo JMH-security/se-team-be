@@ -11,3 +11,13 @@
 20211011	17:49:24	2b74f46b-65d3-4041-9c87-65e0982d46ad	POST	undefined	/auth
 20211011	17:49:38	32899fb9-23b8-49fc-95ac-631462d7174c	POST	undefined	/employees
 20211011	17:49:44	df0482cf-3962-4078-9a8e-b4712e1d8658	DELETE	undefined	/employees
+20230324	09:27:32	87ccd713-c458-4dec-b60c-e39759fd6c19	GET	undefined	/employees
+20230324	09:36:26	584d21e5-776e-428a-9c7f-3b7aee9572c5	GET	undefined	/
+20230324	09:36:26	fe5985f1-0b50-4b42-9fe6-68ba5e171431	GET	undefined	/css/style.css
+20230324	09:36:41	7d197b6a-c214-437c-9b23-aaa8baf1aa2b	GET	undefined	/auth
+20230324	09:36:47	dcb00605-f7f5-4029-8d71-a87b7b64e998	GET	undefined	/register
+20230324	09:36:54	cfa031a3-bc89-40d7-ac37-8e975f13d964	GET	undefined	/register
+20230324	09:37:21	91b4d712-89bf-4a44-b30b-54eeef8ef737	GET	undefined	/
+20230324	09:37:21	45b7e4d4-533e-4b66-9702-830c804319ca	GET	undefined	/css/style.css
+20230324	09:37:27	aa392d87-48df-41c8-8f8f-ae0dc376a57b	GET	undefined	/logout
+20230324	09:37:36	4c6c0f79-4179-4159-bb7a-8533dc5e88c4	GET	undefined	/logout
