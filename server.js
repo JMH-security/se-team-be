@@ -3,12 +3,20 @@ const app = express();
 const path = require('path');
 const cors = require('cors');
 const corsOptions = require('./config/corsOptions');
-const { logger } = require('./middleware/logEvents');
+const dotenv = require('dotenv').config()
+const { logger, logEvents } = require('./middleware/logEvents');
 const errorHandler = require('./middleware/errorHandler');
 const verifyJWT = require('./middleware/verifyJWT');
 const cookieParser = require('cookie-parser');
 const credentials = require('./middleware/credentials');
+
+const connectDb = require('./config/dbConn')
+const mongoose = require('mongoose')
+
+
+// Kick-off DB on port = PORT
 const PORT = process.env.PORT || 3500;
+connectDb()
 
 // custom middleware logger
 app.use(logger);
@@ -38,6 +46,7 @@ app.use('/register', require('./routes/register'));
 app.use('/auth', require('./routes/auth'));
 app.use('/refresh', require('./routes/refresh'));
 app.use('/logout', require('./routes/logout'));
+app.use('/users', require('./routes/userRoutes'))
 
 app.use(verifyJWT);
 app.use('/employees', require('./routes/api/employees'));
@@ -54,5 +63,12 @@ app.all('*', (req, res) => {
 });
 
 app.use(errorHandler);
+mongoose.connection.once('open', () => {
+    app.listen(PORT, () => console.log(`MongoDB Server running on port ${PORT}`));
+})
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+mongoose.connection.on('error', err => {
+    console.log(err)
+    logEvents(`${err.no}: ${err.code}\t${err.syscall}\t${err.hostname}`,
+    'mongoErrLog.log')
+})

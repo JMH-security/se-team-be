@@ -1,8 +1,7 @@
-[
-    {
-        "username":"dave1",
-        "roles":{"User":2001},
-        "password":"$2b$10$oEbHZlazDHE1YnnJ4XdpGuGh9a/JZOO7Xe6WZtRRsSMgprxMXnKza",
-        "refreshToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRhdmUxIiwiaWF0IjoxNjMzOTkyMjkwLCJleHAiOjE2MzQwNzg2OTB9.U85HVX_gcDZkHHSRWeo7AHfIe7q9i03dGW2ed3fHqAk"},{"username":"walt2","roles":{"User":2001,"Editor":1984},"password":"$2b$10$cvfmz./teMWDccIMChAxZ.HqgL3eoQGYTm1z9lGy5iRf8D7NNargC","refreshToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IndhbHQyIiwiaWF0IjoxNjMzOTkyNDU2LCJleHAiOjE2MzQwNzg4NTZ9.wRVJbN7_67JyTW9PALMWWEsO4BMkehyy5kXq6WilvWc"},{"username":"walt1","roles":{"User":2001,"Editor":1984,"Admin":5150},"password":"$2b$10$33Q9jtAoaXC4aUX9Bjihxum2BHG.ENB6JyoCvPjnuXpITtUd8x8/y","refreshToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IndhbHQxIiwiaWF0IjoxNjMzOTkyNTY0LCJleHAiOjE2MzQwNzg5NjR9.gE2CgbtEuqE42LeJ4dP6APmqyGTNBh53WXVyDdP47yM"
-    }
-]
+[{"username":"dave1","roles":{"User":2001},"password":"$2b$10$oEbHZlazDHE1YnnJ4XdpGuGh9a/JZOO7Xe6WZtRRsSMgprxMXnKza","refreshToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRhdmUxIiwiaWF0IjoxNjMzOTkyMjkwLCJleHAiOjE2MzQwNzg2OTB9.U85HVX_gcDZkHHSRWeo7AHfIe7q9i03dGW2ed3fHqAk"},
+{"username":"walt2","roles":{"User":2001,"Editor":1984},"password":"$2b$10$cvfmz./teMWDccIMChAxZ.HqgL3eoQGYTm1z9lGy5iRf8D7NNargC","refreshToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IndhbHQyIiwiaWF0IjoxNjMzOTkyNDU2LCJleHAiOjE2MzQwNzg4NTZ9.wRVJbN7_67JyTW9PALMWWEsO4BMkehyy5kXq6WilvWc"},
+{"username":"walt1","roles":{"User":2001,"Editor":1984,"Admin":5150},"password":"$2b$10$33Q9jtAoaXC4aUX9Bjihxum2BHG.ENB6JyoCvPjnuXpITtUd8x8/y","refreshToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IndhbHQxIiwiaWF0IjoxNjMzOTkyNTY0LCJleHAiOjE2MzQwNzg5NjR9.gE2CgbtEuqE42LeJ4dP6APmqyGTNBh53WXVyDdP47yM"},
+{"username":"15819@seiteam.com","roles":{"defaultRole":500},"password":"$2b$10$RXSZJYP8AG4mU32P3JS.fuMsqkD6SPqvEp/TWoJJ51eW.sE7/PGse"},
+{"username":"1455@seiteam.com","roles":{"defaultRole":500},"password":"$2b$10$MTdXjfEQxLkdOigyApGnBOY.44RKRVINBDEMiyghpQ6ZDW4jXz8KW"},
+{"username":"123@seiteam.com","roles":{"User":500},"password":"$2b$10$eAViXcd/xjc2LXEG7ZMxtey4Tk8s..hvtsDLRs4Qv5xm5qhC00MKq"},
+{"username":"129@seiteam.com","roles":{"User":500},"password":"$2b$10$z1EUH1eXqSzsnQOpk0x2UuauHPYEmLpFjtWfNQb0ICZLZWJ7f0DdK"}]
