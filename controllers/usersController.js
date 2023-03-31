@@ -75,6 +75,7 @@ const updateUser = asyncHandler(async (req, res) => {
     if (duplicate && duplicate?._id.toString() !== id) {
         return res.status(409).json({ message: 'Updated username already exists'})
     }
+    updateUserObject.id = id
     updateUserObject.user = username
     updateUserObject.userRoles = roles
     updateUserObject.userAccountStatus = active
