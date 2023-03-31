@@ -52,6 +52,7 @@ app.use('/logout', require('./routes/logout'))
 app.use('/users', require('./routes/api/userRoutes'))
 app.use('/users/details', require('./routes/api/userDetailsRoutes'))
 app.use('/notes', require('./routes/api/noteRoutes'))
+app.use('/groups', require('./routes/api/commGroupRoutes'))
 
 app.use(verifyJWT);
 app.use('/employees', require('./routes/api/employees'));
