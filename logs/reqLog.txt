@@ -1,7 +1,0 @@
-20211011	17:44:50	9c6f8dae-33e6-4e75-aa26-9705f6f63c24	POST	undefined	/auth
-20230329	17:11:12	f4c0019c-c02b-4f26-9d41-acf6d7711fc6	OPTIONS	http://localhost:3000	/users
-20230329	17:11:12	0bc432f9-d4d0-48a1-94d7-22b533eadb3c	POST	http://localhost:3000	/users
-20230329	17:12:06	d92ae872-cdc2-4d3b-b03f-02988c0e234d	GET	undefined	/css/style.css
-20230329	17:12:09	10bbcaab-9c7a-49ef-977c-e9bdd82cb04a	GET	undefined	/
-20230329	17:12:09	9021da56-6156-4ec2-8984-28c4ecb92ff2	GET	undefined	/css/style.css
-20230329	17:13:47	9d80d999-4429-4488-9365-9b5973f7ae9c	OPTIONS	http://localhost:3000	/users
