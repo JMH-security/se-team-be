@@ -1,50 +1,42 @@
-//NEED TO CONVERT DB Connection to MongoDB
 const User = require('../model/User')
-const Note = require('../model/Notes')
-
 const asyncHandler = require('express-async-handler')
+
 const bcrypt = require('bcrypt')
 
+//TO DO - NEED TO SORT OUT ROLES BETTER - HARD CODED RIGHT NOW
 const ROLES_LIST = require('../config/roles_list');
-
-
 const defaultRole = ROLES_LIST.User
 
-
 const handleNewUser = asyncHandler(async (req, res) => {
+    const { username, password } = req.body
+
+    if (!username || !password) {
+        return res.status(400).json({ message: 'Username and password are required.' })
+    }
     
-    const { user, pwd, userRoles } = req.body;
-    if (!user || !pwd) return res.status(400).json({ 'message': 'Username and password are required.' });
     // check for duplicate usernames in the db
-
-    const duplicate = User.find({ username: user })
-  
-    if (duplicate) return res.sendStatus(409); //Conflict 
-    try {
-        //encrypt the password
-        const hashedPwd = await bcrypt.hash(pwd, 10);
-        //store the new user
-        const newUser = {
-            "username": user,
-            "roles": {"User":defaultRole},
-            "password": hashedPwd
-        };
-        console.log(newUser)
-       
-        // usersDB.setUsers([...usersDB.users, newUser]);
-        // await fsPromises.writeFile(
-        //     path.join(__dirname, '..', 'model', 'users.json'),
-        //     JSON.stringify(usersDB.users)
-        // );
-       
-        const user = await User.create(newUser)
-
-        console.log("Line 43: ",usersDB.users);
+    const duplicate = await User.findOne({ user: username }).lean().exec()
+    if (duplicate) { 
+        return res.sendStatus(409).json({ message: `Username ${username} in use`})
+    }
         
-        res.status(201).json({ 'success': `New user ${user} created!` });
-    } catch (err) {
-        res.status(500).json({ 'message': err.message });
+    //encrypt the password
+    const hashedPwd = await bcrypt.hash(password, 10);
+
+    //store the new user
+    const newUser = {
+        user: username,
+        userRoles: ["User", "Admin"],
+        password: hashedPwd
+    }
+
+    const user = await User.create(newUser)
+
+    if (user) {    
+        res.status(201).json({ success: `New user ${user} created!` });
+    } else {
+        res.status(400).json({ message: 'Invalid User Data Received' });
     }
 })
 
-module.exports = { handleNewUser };
+module.exports = { handleNewUser }
