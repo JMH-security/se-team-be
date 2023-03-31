@@ -1,31 +1,23 @@
 //NEED TO CONVERT DB Connection to MongoDB
+const User = require('../model/User')
+const Note = require('../model/Notes')
 
-const usersDB = require('../model/User')
+const asyncHandler = require('express-async-handler')
+const bcrypt = require('bcrypt')
 
-
-
-// const usersDB = {
-//     users: require('../model/users.json'),
-//     setUsers: function (data) { this.users = data }
-// }
-// const fsPromises = require('fs').promises;
-// const path = require('path');
-
-
-const bcrypt = require('bcrypt');
 const ROLES_LIST = require('../config/roles_list');
-const User = require('../model/User');
+
 
 const defaultRole = ROLES_LIST.User
 
 
-const handleNewUser = async (req, res) => {
+const handleNewUser = asyncHandler(async (req, res) => {
     
-    const { user, pwd } = req.body;
+    const { user, pwd, userRoles } = req.body;
     if (!user || !pwd) return res.status(400).json({ 'message': 'Username and password are required.' });
     // check for duplicate usernames in the db
 
-    const duplicate = usersDB.find(user)
+    const duplicate = User.find({ username: user })
   
     if (duplicate) return res.sendStatus(409); //Conflict 
     try {
@@ -53,6 +45,6 @@ const handleNewUser = async (req, res) => {
     } catch (err) {
         res.status(500).json({ 'message': err.message });
     }
-}
+})
 
 module.exports = { handleNewUser };

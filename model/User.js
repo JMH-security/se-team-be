@@ -12,7 +12,6 @@ const userSchema = new mongoose.Schema(
     },
     userRoles: [{
         type: String,
-        required: true,
         default: "User"
     }],
     userAccountStatus: {

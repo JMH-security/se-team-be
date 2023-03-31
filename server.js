@@ -1,8 +1,11 @@
 const express = require('express');
 const app = express();
+
 const path = require('path');
+
 const cors = require('cors');
 const corsOptions = require('./config/corsOptions');
+
 const dotenv = require('dotenv').config()
 const { logger, logEvents } = require('./middleware/logEvents');
 const errorHandler = require('./middleware/errorHandler');
@@ -41,12 +44,13 @@ app.use(cookieParser());
 app.use('/', express.static(path.join(__dirname, '/public')));
 
 // routes
-app.use('/', require('./routes/root'));
-app.use('/register', require('./routes/register'));
-app.use('/auth', require('./routes/auth'));
-app.use('/refresh', require('./routes/refresh'));
-app.use('/logout', require('./routes/logout'));
+app.use('/', require('./routes/root'))
+app.use('/register', require('./routes/register'))
+app.use('/auth', require('./routes/auth'))
+app.use('/refresh', require('./routes/refresh'))
+app.use('/logout', require('./routes/logout'))
 app.use('/users', require('./routes/userRoutes'))
+app.use('/notes', require('./routes/noteRoutes'))
 
 app.use(verifyJWT);
 app.use('/employees', require('./routes/api/employees'));

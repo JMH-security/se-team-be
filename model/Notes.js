@@ -1,5 +1,4 @@
-const mongoose = require('mongoose')
-const AutoIncrement = require('mongoose-sequence')(mongoose)
+const mongoose = require('mongoose') 
 
 const noteSchema = new mongoose.Schema(
     {
@@ -20,15 +19,10 @@ const noteSchema = new mongoose.Schema(
             type: Boolean,
             default: false
         }
-}, {
-    timestamps: true
-}
+    },
+    {
+        timestamps: true
+    }
 )
-
-noteSchema.plugin(AutoIncrement, {
-    inc_field: 'index',
-    id: 'noteIndex',
-    start_seq: 1001
-})
 
 module.exports = mongoose.model('Note', noteSchema)
