@@ -1,62 +1,54 @@
 const User = require('../model/User')
-const Note = require('../model/Notes')
 const UserRole = require('../model/UserRoles')
 
 const asyncHandler = require('express-async-handler')
 const bcrypt = require('bcrypt')
 
 
-// @desc Get All Users
-// @route GET /users
+// @desc Get All Roles
+// @route GET /roles
 // @access Private
 
-const getAllUsers = asyncHandler(async (req, res) => {
-    const allUsers = await User.find().select('-password').lean()
-    if (!allUsers?.length) {
-        return res.status(400).json({ message: 'No Users Found Shitbird'})
+const getAllRoles = asyncHandler(async (req, res) => {
+    const allRoles = await UserRole.find().lean()
+    if (!allRoles?.length) {
+        return res.status(400).json({ message: 'No Roles Found Shitbird'})
     }
-    return res.json(allUsers)
+    return res.json(allRoles)
 })
 
-// @desc Create New User
-// @route POST /users
+// @desc Create New Role
+// @route POST /roles
 // @access Private
 
-const createNewUser = asyncHandler(async (req, res) => {
-    const { username, password } = req.body
+const createNewRole = asyncHandler(async (req, res) => {
+    const { role, roleCode } = req.body
 
     // Confirm data
-    if (!username || !password) {
+    if (!role || !roleCode) {
         return res.status(400).json({ message: 'All fields are required' })
     }
 
     // Check for duplicate username
-    const duplicate = await User.findOne({ username }).lean().exec()
+    const duplicate = await UserRole.findOne({ role }).lean().exec()
 
     if (duplicate) {
-        return res.status(409).json({ message: 'Duplicate username' })
+        return res.status(409).json({ message: 'Role Already In Database' })
     }
 
-    // Hash password 
-    const hashedPwd = await bcrypt.hash(password, 10) // salt rounds
-    
-    // Get User Role
-    const userRole = await UserRole.findOne({ user })
-    console.log(userRole)
-
-    const userObject = { user: username, "password": hashedPwd, userRoles: roles }
+    const roleObject = { role, roleCode }
 
     // Create and store new user 
-    const user = await User.create(userObject)
+    const addRole = await UserRole.create(roleObject)
 
-    if (user) { //created 
-        res.status(201).json({ message: `New user ${username} created` })
+    if (addRole) { //created 
+        res.status(201).json({ message: `New Role ${role} created` })
     } else {
-        res.status(400).json({ message: 'Invalid user data received' })
+        res.status(400).json({ message: 'Invalid data received' })
     }
 })
 
-// @desc Update a User
+// @desc Update a Role
 // @route PATCH /users
 // @access Private
 
@@ -118,5 +110,5 @@ const deleteUser = asyncHandler(async (req, res) => {
         return res.status(200).json({ message: `id ${id} deleted, username: ${deletedUser.user}`})
 })
 
-module.exports = { getAllUsers, createNewUser, updateUser, deleteUser }
+module.exports = { getAllRoles, createNewRole, updateUser, deleteUser }
 

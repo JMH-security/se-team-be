@@ -11,8 +11,9 @@ const userSchema = new mongoose.Schema(
         required: true
     },
     userRoles: [{
-        type: String,
-        default: "User"
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'UserRole'
     }],
     userAccountStatus: {
         type: Boolean,
